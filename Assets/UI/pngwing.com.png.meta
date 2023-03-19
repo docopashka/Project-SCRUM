@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98cd245cf2795394091a3412a131a922
+guid: e5d408fb720a3724190a9690f484f6b3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu2_0
+      name: pngwing.com_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 415
-        width: 152
-        height: 156
+        x: 0
+        y: 219
+        width: 77
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf1c2b4750f4eaf4097ded980730ddc4
-      internalID: 816077706
+      spriteID: cb708167c647e3742a3b34fd97d8c656
+      internalID: 170250147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu2_1
+      name: pngwing.com_1
       rect:
         serializedVersion: 2
-        x: 285
-        y: 415
-        width: 155
-        height: 156
+        x: 98
+        y: 220
+        width: 79
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ecbe17b7369d754d9538dd8413730d6
-      internalID: -1930307604
+      spriteID: 1fbba3c916426ac4b993465250ae4647
+      internalID: -631558706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu2_2
+      name: pngwing.com_2
       rect:
         serializedVersion: 2
-        x: 468
-        y: 414
-        width: 156
-        height: 156
+        x: 203
+        y: 220
+        width: 62
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71616b4add8e3646bc4eeb99941939c
-      internalID: 387259755
+      spriteID: 0cac090e12f86ea488ea7cc353576a63
+      internalID: 1945180052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu2_3
+      name: pngwing.com_3
       rect:
         serializedVersion: 2
-        x: 652
-        y: 415
-        width: 156
-        height: 155
+        x: 289
+        y: 223
+        width: 84
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d32ffd8f580a58438c432bd27c5e795
-      internalID: 222605321
+      spriteID: cf9a7cd2b3898334cadf503d7eb66cf3
+      internalID: 600558108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: menu2_4
+      name: pngwing.com_4
       rect:
         serializedVersion: 2
-        x: 276
-        y: 242
-        width: 154
-        height: 157
+        x: 390
+        y: 221
+        width: 70
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef74081b1523e434eb5e25690ba7a4a7
-      internalID: -691463231
+      spriteID: cf21fe1bb2817b5409f9dba675ad8e7f
+      internalID: 729144440
       vertices: []
       indices: 
       edges: []
@@ -220,11 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      menu2_4: -691463231
-      menu2_2: 387259755
-      menu2_0: 816077706
-      menu2_1: -1930307604
-      menu2_3: 222605321
+      pngwing.com_2: 1945180052
+      pngwing.com_4: 729144440
+      pngwing.com_0: 170250147
+      pngwing.com_1: -631558706
+      pngwing.com_3: 600558108
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
