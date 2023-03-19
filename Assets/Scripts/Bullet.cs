@@ -1,16 +1,19 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     private GameObject parent;
-    public GameObject Parent { set { parent = value; } get { return parent; } }
+    public GameObject Parent { set { parent = value; }  get { return parent; } }
 
     private float speed = 10.0F;
     private Vector3 direction;
     public Vector3 Direction { set { direction = value; } }
 
+    public Color Color
+    {
+        set { sprite.color = value; }
+    }
 
     private SpriteRenderer sprite;
 
@@ -23,6 +26,7 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 1.4F);
     }
+	
 
     private void Update()
     {
