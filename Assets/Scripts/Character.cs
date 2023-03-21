@@ -146,8 +146,6 @@ public class Character : Unit
         {
             ReceiveDamage();
         }
-
-        if (!bullet) ReceiveDamage();
     }
 }
 
