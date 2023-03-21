@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Character : Unit
 {
@@ -113,6 +114,16 @@ public class Character : Unit
         rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
 
         Debug.Log(lives);
+
+        if (lives <= 0) Die();
+    }
+
+    protected override void Die()
+    {
+        State = CharState.Die;
+        gameObject.GetComponent<Character>().enabled = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Destroy(gameObject);
     }
 
     private void CheckGround()
@@ -120,6 +131,9 @@ public class Character : Unit
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
 
         isGrounded = colliders.Length > 1;
+        
+        Vector3 position = transform.position;
+        if (!isGrounded && position.y < -5) Die();
 
         if (!isGrounded) State = CharState.Jump;
     }
@@ -132,6 +146,8 @@ public class Character : Unit
         {
             ReceiveDamage();
         }
+
+        if (!bullet) ReceiveDamage();
     }
 }
 
@@ -140,5 +156,6 @@ public enum CharState
 {
     Idle,
     Run,
-    Jump
+    Jump,
+    Die
 }
