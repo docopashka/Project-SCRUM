@@ -18,22 +18,4 @@ public class FlyMonster : Monster
     {
         sprite.flipX = aiPath.desiredVelocity.x > 0.01f;
     }
-
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
-    {
-        Bullet bullet = collider.GetComponent<Bullet>();
-
-        if (bullet)
-        {
-            ReceiveDamage();
-            Debug.Log(1);
-        }
-
-        Character character = collider.GetComponent<Character>();
-
-        if (character)
-        {
-            character.ReceiveDamage();
-        }
-    }
 }

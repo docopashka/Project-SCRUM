@@ -13,7 +13,7 @@ public class Character : Unit
         get { return lives; }
         set
         {
-           if (value < 5) lives = value;
+           if (value <= 5) lives = value;
             livesBar.Refresh();
         }
     }

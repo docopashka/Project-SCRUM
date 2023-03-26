@@ -7,6 +7,11 @@ public class MoveableMonster : Monster
     [SerializeField]
     private float speed = 2.0F;
 
+    [SerializeField]
+    private float up = 0.6F;
+    [SerializeField]
+    private float right = 0.5F;
+
     private Vector3 direction;
     
 
@@ -40,11 +45,12 @@ public class MoveableMonster : Monster
 
     private void Move()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x * 0.5F + transform.up * 0.6F, 0.1F);//
-        Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x * 0.5F, 0.1F);
+        sprite.flipX = direction.x > 0.0F;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x * right + transform.up * up, 0.1F);//
+        Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x * right, 0.1F);
 
-        if ((colliders.Length > 1 && colliders.All(x => !x.GetComponent<Character>())) || (colliders1.Length == 0 && colliders1.All(x => !x.GetComponent<Character>()))) direction *= -1.0F;// 
-        
+        if ((colliders.Length > 1 && colliders.All(x => !x.GetComponent<Character>())) || (colliders1.Length == 0 && colliders1.All(x => !x.GetComponent<Character>()))) direction *= -1.0F;
+
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 }
