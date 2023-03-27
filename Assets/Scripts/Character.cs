@@ -7,6 +7,7 @@ public class Character : Unit
     [SerializeField]
     private int lives = 5;
     public int level = 1;
+    public GameObject death;
     
     public int Lives
     {
@@ -27,6 +28,7 @@ public class Character : Unit
     private bool isGrounded = false;
 
     private Bullet bullet;
+
     public void SavePlayer() //для кнопки сохранить
     {
         SaveSystem.SavePlayer(this);
@@ -115,14 +117,16 @@ public class Character : Unit
 
         Debug.Log(lives);
 
-        if (lives <= 0) Die();
+        if (lives == 0) Die();
     }
 
     protected override void Die()
     {
         State = CharState.Die;
         gameObject.GetComponent<Character>().enabled = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        death.SetActive(true);
+        //Instantiate(death, new Vector3(694, 314, 0), Quaternion.identity);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //Destroy(gameObject);
     }
 

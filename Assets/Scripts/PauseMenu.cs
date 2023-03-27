@@ -9,10 +9,19 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject PauseGameMenu;
 
+    public GameObject DeathMenu;
+
+    private void Awake()
+    {
+        PauseGameMenu.SetActive(false);
+        PauseGame = false;
+        DeathMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Canvas/PauseButton")) 
         {
             if (PauseGame)
             {
@@ -22,6 +31,13 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+        if (DeathMenu.activeInHierarchy) 
+        {
+            Time.timeScale = 0f;
+            PauseGame = true;
+            Destroy(PauseGameMenu);
+            Destroy(GameObject.Find("Canvas/PauseButton"));
         }
     }
 
@@ -43,5 +59,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
