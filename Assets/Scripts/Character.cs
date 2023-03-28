@@ -8,6 +8,7 @@ public class Character : Unit
     private int lives = 5;
     public int level = 1;
     public GameObject death;
+    public GameObject end;
     
     public int Lives
     {
@@ -149,6 +150,14 @@ public class Character : Unit
         if (bullet && bullet.Parent != gameObject)
         {
             ReceiveDamage();
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Finish")
+        {
+            end.SetActive(true);
         }
     }
 }

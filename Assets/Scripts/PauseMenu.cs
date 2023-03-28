@@ -11,11 +11,15 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject DeathMenu;
 
+    public GameObject End;
+
+
     private void Awake()
     {
         PauseGameMenu.SetActive(false);
         PauseGame = false;
         DeathMenu.SetActive(false);
+        End.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -33,6 +37,13 @@ public class PauseMenu : MonoBehaviour
             }
         }
         if (DeathMenu.activeInHierarchy) 
+        {
+            Time.timeScale = 0f;
+            PauseGame = true;
+            Destroy(PauseGameMenu);
+            Destroy(GameObject.Find("Canvas/PauseButton"));
+        }
+        if (End.activeInHierarchy)
         {
             Time.timeScale = 0f;
             PauseGame = true;
