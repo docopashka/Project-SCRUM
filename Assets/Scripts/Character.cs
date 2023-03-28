@@ -9,7 +9,9 @@ public class Character : Unit
     public int level = 1;
     public GameObject death;
     public GameObject end;
-    
+    public GameObject gun;
+
+
     public int Lives
     {
         get { return lives; }
@@ -59,6 +61,7 @@ public class Character : Unit
     new private Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
+    private SpriteRenderer gunSprite;
 
     private void Awake()
     {
@@ -66,7 +69,7 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-
+        gunSprite = gun.GetComponentInChildren<SpriteRenderer>();
         bullet = Resources.Load<Bullet>("Bullet");
     }
 
@@ -92,6 +95,8 @@ public class Character : Unit
 
         sprite.flipX = direction.x < 0.0F;
 
+        gunSprite.flipX = direction.x < 0.0F;
+
         if (isGrounded) State = CharState.Run;
     }
 
@@ -102,7 +107,7 @@ public class Character : Unit
 
     private void Shoot()
     {
-        Vector3 position = transform.position; position.y += 0.8F;
+        Vector3 position = gun.transform.position; //position.y += 0.5F;
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
         newBullet.Parent = gameObject;

@@ -38,7 +38,7 @@ public class MoveableMonster : Monster
 
         if (unit && unit is Character)
         {
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.3F) ReceiveDamage();
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.5F) ReceiveDamage();
             else unit.ReceiveDamage();
         }
     }
