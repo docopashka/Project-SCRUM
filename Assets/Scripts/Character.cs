@@ -11,6 +11,10 @@ public class Character : Unit
     public GameObject death;
     public GameObject end;
     public GameObject gun;
+    public AudioSource shoot;
+    public AudioSource jump;
+    public AudioSource run;
+    public AudioSource coin;
 
     public int Stars
     {
@@ -18,6 +22,7 @@ public class Character : Unit
         set
         {
             stars = value;
+            coin.Play();
             starsBar.Refresh();
         }
     }
@@ -109,16 +114,23 @@ public class Character : Unit
 
         gunSprite.flipX = direction.x < 0.0F;
 
-        if (isGrounded) State = CharState.Run;
+        if (isGrounded)
+        {
+            State = CharState.Run;
+            run.Play();
+        }
     }
 
     private void Jump()
     {
+        jump.Play();
         rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void Shoot()
     {
+        shoot.Play();
+        
         Vector3 position = gun.transform.position; //position.y += 0.5F;
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
