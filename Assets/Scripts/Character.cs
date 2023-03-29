@@ -6,11 +6,22 @@ public class Character : Unit
 {
     [SerializeField]
     private int lives = 5;
+    private int stars = 0;
     public int level = 1;
     public GameObject death;
     public GameObject end;
     public GameObject gun;
 
+    public int Stars
+    {
+        get { return stars; }
+        set
+        {
+            stars = value;
+            starsBar.Refresh();
+        }
+    }
+    private StarsBar starsBar;
 
     public int Lives
     {
@@ -66,6 +77,7 @@ public class Character : Unit
     private void Awake()
     {
         livesBar = FindObjectOfType<LivesBar>();
+        starsBar = FindObjectOfType<StarsBar>();
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();

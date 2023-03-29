@@ -13,6 +13,11 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject End;
 
+    public GameObject StarBar;
+
+    private Transform[] stars = new Transform[3];
+
+    private Character character;
 
     private void Awake()
     {
@@ -45,6 +50,13 @@ public class PauseMenu : MonoBehaviour
         }
         if (End.activeInHierarchy)
         {
+            character = FindObjectOfType<Character>();
+            for (int i = 0; i < stars.Length; i++)
+            {
+                stars[i] = StarBar.transform.GetChild(i);
+                if (i < character.Stars) stars[i].gameObject.SetActive(true);
+                else stars[i].gameObject.SetActive(false);
+            }
             Time.timeScale = 0f;
             PauseGame = true;
             Destroy(PauseGameMenu);
