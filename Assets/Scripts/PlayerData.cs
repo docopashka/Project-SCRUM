@@ -7,12 +7,14 @@ public class PlayerData
 {
     public int level;
     public int health;
+    public int stars;
     public float[] position;
 
     public PlayerData(Character character)
     {
         //level = character.level;
         health = character.Lives;
+        stars = character.Stars;
 
         position = new float[3];
         position[0] = character.transform.position.x;

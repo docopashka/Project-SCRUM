@@ -8,9 +8,10 @@ public class Character : Unit
     private int lives = 5;
     private int stars = 0;
     public int level = 1;
+    //private string time;//GameObject
     public GameObject death;
     public GameObject end;
-    public GameObject gun;
+    private GameObject gun;
     public AudioSource shoot;
     public AudioSource jump;
     public AudioSource run;
@@ -60,6 +61,7 @@ public class Character : Unit
 
         level = data.level;
         lives = data.health;
+        stars = data.stars;
 
         Vector3 position;
         position.x = data.position[0];
@@ -81,13 +83,17 @@ public class Character : Unit
 
     private void Awake()
     {
-        livesBar = FindObjectOfType<LivesBar>();
-        starsBar = FindObjectOfType<StarsBar>();
-        rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        gunSprite = gun.GetComponentInChildren<SpriteRenderer>();
-        bullet = Resources.Load<Bullet>("Bullet");
+        livesBar    = FindObjectOfType<LivesBar>();
+        starsBar    = FindObjectOfType<StarsBar>();
+        rigidbody   = GetComponent<Rigidbody2D>();
+        animator    = GetComponent<Animator>();
+        sprite      = GetComponentInChildren<SpriteRenderer>();
+        bullet      = Resources.Load<Bullet>("Bullet");
+        gun         = GameObject.FindWithTag("Gun");
+        gunSprite   = gun.GetComponentInChildren<SpriteRenderer>();
+        //death       = GameObject.FindWithTag("Death");//FindObjectOfType<Death>();
+        //end         = GameObject.FindWithTag("End"); //FindObjectOfType<End>();
+        //time = FindObjectOfType<Time>();
     }
 
     private void FixedUpdate()
@@ -155,6 +161,8 @@ public class Character : Unit
         State = CharState.Die;
         gameObject.GetComponent<Character>().enabled = false;
         death.SetActive(true);
+        //time = GameObject.FindWithTag("Timer").text;
+        //Debug.Log(time);
         //Instantiate(death, new Vector3(694, 314, 0), Quaternion.identity);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //Destroy(gameObject);
@@ -187,6 +195,8 @@ public class Character : Unit
         if(collision.gameObject.tag == "Finish")
         {
             end.SetActive(true);
+            //time = GameObject.FindWithTag("Timer").text;
+            //Debug.Log(time);
         }
     }
 }
