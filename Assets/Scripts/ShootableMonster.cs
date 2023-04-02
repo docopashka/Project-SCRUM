@@ -7,12 +7,18 @@ public class ShootableMonster : Monster
     private float rate = 2.0F;
     [SerializeField]
     private Color bulletColor = Color.white;
+    [SerializeField]
+    private float direction = 1.0F;
 
     private Bullet bullet;
+
+    private SpriteRenderer sprite;
 
     protected override void Awake()
     {
         bullet = Resources.Load<Bullet>("Bullet");
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        if (sprite.flipX) direction = -1.0F;
     }
 
     protected override void Start()
@@ -26,7 +32,7 @@ public class ShootableMonster : Monster
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
         newBullet.Parent = gameObject;
-        newBullet.Direction = -newBullet.transform.right;
+        newBullet.Direction = -newBullet.transform.right * direction;
         newBullet.Color = bulletColor;
     }
 

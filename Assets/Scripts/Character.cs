@@ -105,7 +105,7 @@ public class Character : Unit
     {
         if (isGrounded) State = CharState.Idle;
 
-        if (Input.GetButtonDown("Fire1")) Shoot();
+        if (Input.GetButtonDown("Fire1") && (Time.timeScale != 0f)) Shoot();
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
     }
