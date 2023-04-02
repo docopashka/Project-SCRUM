@@ -30,7 +30,7 @@ public class Spike : MonoBehaviour
 
         if (character)
         {
-            character.Lives--;
+            character.ReceiveDamage();
             Destroy(gameObject);
         }
         else Destroy(gameObject);
