@@ -207,5 +207,6 @@ public enum CharState
     Idle,
     Run,
     Jump,
+    Hit,
     Die
 }

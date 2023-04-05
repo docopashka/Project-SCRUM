@@ -3,9 +3,21 @@ using System.Collections;
 
 public class Monster : Unit
 {
-    protected virtual void Awake() { }
+    protected virtual void Awake() 
+    {
+       // animator = GetComponent<Animator>();
+    }
     protected virtual void Start() { }
-    protected virtual void Update() { }
+    protected virtual void Update() {
+        //State = CharState1.Idle;
+    }
+
+    //private CharState1 State
+    //{
+    //    get { return (CharState1)animator.GetInteger("State"); }
+    //    set { animator.SetInteger("State", (int)value); }
+    //}
+    //private Animator animator;
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
@@ -13,6 +25,7 @@ public class Monster : Unit
 
         if (bullet)
         {
+            //State = CharState1.Hit;
             ReceiveDamage();
         }
 
@@ -24,3 +37,10 @@ public class Monster : Unit
         }
     }
 }
+
+//public enum CharState1
+//{
+//    Idle,
+//    Hit,
+//    Run
+//}
