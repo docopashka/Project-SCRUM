@@ -11,7 +11,8 @@ public class Monster : Unit
     protected virtual void Update() {
         //State = CharState1.Idle;
     }
-
+    [SerializeField]
+    private int damage = 1;
     //private CharState1 State
     //{
     //    get { return (CharState1)animator.GetInteger("State"); }
@@ -33,7 +34,7 @@ public class Monster : Unit
 
         if (character)
         {
-            character.ReceiveDamage();
+            character.ReceiveDamage(damage);
         }
     }
 }

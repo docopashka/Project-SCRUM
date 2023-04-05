@@ -144,16 +144,16 @@ public class Character : Unit
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
     }
 
-    public override void ReceiveDamage()
+    public override void ReceiveDamage(int damage = 1)
     {
-        Lives--;
+        Lives -= damage;
 
         rigidbody.velocity = Vector3.zero;
         rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
 
         Debug.Log(lives);
 
-        if (lives == 0) Die();
+        if (lives <= 0) Die();
     }
 
     protected override void Die()

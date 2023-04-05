@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Unit : MonoBehaviour
 {
-    public virtual void ReceiveDamage()
+    public virtual void ReceiveDamage(int damage = 1)
     {
         Die();
     }

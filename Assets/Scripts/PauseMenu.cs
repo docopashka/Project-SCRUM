@@ -46,7 +46,8 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f;
             PauseGame = true;
             Destroy(PauseGameMenu);
-            Destroy(GameObject.Find("Canvas/PauseButton"));
+            //GameObject.Find("Canvas/Bar").SetActive(false);
+            Destroy(GameObject.Find("Canvas/Bar"));
         }
         if (End.activeInHierarchy)
         {
@@ -60,7 +61,9 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f;
             PauseGame = true;
             Destroy(PauseGameMenu);
-            Destroy(GameObject.Find("Canvas/PauseButton"));
+            Destroy(GameObject.Find("Canvas/Bar"));
+            //GameObject.Find("Canvas/Bar").SetActive(false);
+            //Destroy(GameObject.Find("Canvas/PauseButton"));
         }
     }
 
