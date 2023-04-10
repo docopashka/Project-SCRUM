@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Canvas/PauseButton")) 
+        if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Canvas/Bar/PauseButton")) 
         {
             if (PauseGame)
             {
@@ -91,5 +91,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Next(int numberScenes)
+    {
+        SceneManager.LoadScene(numberScenes);
     }
 }
