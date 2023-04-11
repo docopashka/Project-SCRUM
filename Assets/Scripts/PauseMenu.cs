@@ -52,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         if (End.activeInHierarchy)
         {
             character = FindObjectOfType<Character>();
+            if (character.Stars == 0) Destroy(GameObject.Find("Canvas/Bar/ButtonNext"));
             for (int i = 0; i < stars.Length; i++)
             {
                 stars[i] = StarBar.transform.GetChild(i);
@@ -95,6 +96,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Next(int numberScenes)
     {
-        SceneManager.LoadScene(numberScenes);
+        if(character.Stars > 0) SceneManager.LoadScene(numberScenes);
+        
+        
     }
 }

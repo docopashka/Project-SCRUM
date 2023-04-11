@@ -174,8 +174,8 @@ public class Character : Unit
 
         isGrounded = colliders.Length > 1;
         
-        Vector3 position = transform.position;
-        if (!isGrounded && position.y < -5) Die();
+        //Vector3 position = transform.position;
+        //if (!isGrounded && position.y < -5) Die();
 
         if (!isGrounded) State = CharState.Jump;
     }
