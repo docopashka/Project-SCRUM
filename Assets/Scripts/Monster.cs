@@ -37,6 +37,16 @@ public class Monster : Unit
             character.ReceiveDamage(damage);
         }
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject);
+        if (collision.gameObject.tag == "Stone")
+        {
+            Debug.Log("St");
+            ReceiveDamage();
+        }
+    }
 }
 
 //public enum CharState1

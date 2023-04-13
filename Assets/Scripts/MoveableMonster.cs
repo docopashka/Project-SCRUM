@@ -32,16 +32,16 @@ public class MoveableMonster : Monster
         Move();
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collider)
-    {
-        Unit unit = collider.GetComponent<Unit>();
+    //protected override void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    Unit unit = collider.GetComponent<Unit>();
 
-        if (unit && unit is Character)
-        {
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.5F) ReceiveDamage();
-            else unit.ReceiveDamage();
-        }
-    }
+    //    if (unit && unit is Character)
+    //    {
+    //        if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.5F) ReceiveDamage();
+    //        else unit.ReceiveDamage();
+    //    }
+    //}
 
     private void Move()
     {

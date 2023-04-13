@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Canvas/PauseButton")) 
+        if (Input.GetKeyDown(KeyCode.Escape) && GameObject.Find("Canvas/Bar/PauseButton")) 
         {
             if (PauseGame)
             {
@@ -52,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         if (End.activeInHierarchy)
         {
             character = FindObjectOfType<Character>();
+            if (character.Stars == 0) Destroy(GameObject.Find("Canvas/Bar/ButtonNext"));
             for (int i = 0; i < stars.Length; i++)
             {
                 stars[i] = StarBar.transform.GetChild(i);
@@ -91,5 +92,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Next(int numberScenes)
+    {
+        if(character.Stars > 0) SceneManager.LoadScene(numberScenes);
     }
 }

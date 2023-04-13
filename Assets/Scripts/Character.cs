@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Character : Unit
 {
     [SerializeField]
     private int lives = 5;
     private int stars = 0;
-    public int level = 1;
-    //private string time;//GameObject
+    //public int level = 1;
+    private GameObject timer;//GameObject
     public GameObject death;
     public GameObject end;
     private GameObject gun;
@@ -16,6 +17,22 @@ public class Character : Unit
     public AudioSource jump;
     public AudioSource run;
     public AudioSource coin;
+
+    int sceneIndex;
+    int level;
+    string scene;
+    string levelStars;
+    string levelTime;
+    string time;
+
+    void Start()
+    {
+        level = PlayerPrefs.GetInt("LevelComplete");
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        scene = sceneIndex.ToString();
+        levelStars = "Stars" + scene;
+        levelTime = "Time" + scene;
+    }
 
     public int Stars
     {
@@ -49,27 +66,8 @@ public class Character : Unit
 
     private Bullet bullet;
 
-    public void SavePlayer() //для кнопки сохранить
-    {
-        SaveSystem.SavePlayer(this);
-    }
 
-
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        level = data.level;
-        lives = data.health;
-        stars = data.stars;
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        transform.position = position;
-
-    }
+ 
     private CharState State
     {
         get { return (CharState)animator.GetInteger("State"); }
@@ -93,7 +91,7 @@ public class Character : Unit
         gunSprite   = gun.GetComponentInChildren<SpriteRenderer>();
         //death       = GameObject.FindWithTag("Death");//FindObjectOfType<Death>();
         //end         = GameObject.FindWithTag("End"); //FindObjectOfType<End>();
-        //time = FindObjectOfType<Time>();
+        timer        = GameObject.FindWithTag("Timer");//FindObjectOfType<Time>();
     }
 
     private void FixedUpdate()
@@ -108,6 +106,8 @@ public class Character : Unit
         if (Input.GetButtonDown("Fire1") && (Time.timeScale != 0f)) Shoot();
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
+
+        
     }
 
     private void Run()
@@ -174,8 +174,8 @@ public class Character : Unit
 
         isGrounded = colliders.Length > 1;
         
-        Vector3 position = transform.position;
-        if (!isGrounded && position.y < -5) Die();
+        //Vector3 position = transform.position;
+        //if (!isGrounded && position.y < -5) Die();
 
         if (!isGrounded) State = CharState.Jump;
     }
@@ -195,8 +195,24 @@ public class Character : Unit
         if(collision.gameObject.tag == "Finish")
         {
             end.SetActive(true);
-            //time = GameObject.FindWithTag("Timer").text;
-            //Debug.Log(time);
+
+            if(stars > 0 && level < sceneIndex)
+            {
+                time = timer.GetComponent<Text>().text;
+                //Debug.Log(time);
+                //Debug.Log(sceneIndex);
+                PlayerPrefs.SetInt("LevelComplete", sceneIndex);
+                PlayerPrefs.SetInt(levelStars, stars);
+                PlayerPrefs.SetString(levelTime, time);
+            }else if (stars > 0)
+            {
+                time = timer.GetComponent<Text>().text;
+                if (stars > PlayerPrefs.GetInt(levelStars))
+                {
+                    PlayerPrefs.SetInt(levelStars, stars);
+                    PlayerPrefs.SetString(levelTime, time);
+                }
+            }
         }
     }
 }
