@@ -97,7 +97,5 @@ public class PauseMenu : MonoBehaviour
     public void Next(int numberScenes)
     {
         if(character.Stars > 0) SceneManager.LoadScene(numberScenes);
-        
-        
     }
 }
