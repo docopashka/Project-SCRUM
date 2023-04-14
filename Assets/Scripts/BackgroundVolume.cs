@@ -17,7 +17,7 @@ public class BackgroundVolume : MonoBehaviour
         else
         {
             this.gameObject.tag = this.createdTag;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
     }
 }

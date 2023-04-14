@@ -72,7 +72,22 @@ public class Scenes : MonoBehaviour
         level3.interactable = false;
         level4.interactable = false;
         level5.interactable = false;
-        PlayerPrefs.DeleteAll();
+        string t;
+        GameObject obj;
+
+        for (int i = 1; i < levelComplete + 1; i++)
+        {
+            t = "Stars" + i.ToString();
+            obj = GameObject.Find(t);
+            obj.GetComponent<Text>().text = " Stars: 0";
+            PlayerPrefs.DeleteKey(t);
+            t = "Time" + i.ToString();
+            obj = GameObject.Find(t);
+            obj.GetComponent<Text>().text = " Time: 00:00";
+            PlayerPrefs.DeleteKey(t);
+        }
+        PlayerPrefs.SetInt("LevelComplete", 0);
+        //PlayerPrefs.DeleteAll();
     }
 
     public void CangeScenes(int numberScenes)
